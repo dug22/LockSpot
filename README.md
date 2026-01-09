@@ -72,11 +72,12 @@ If you wish to use these models in production, locate the 'models' directory wit
 to use, in this case, 'random forest classifier 50k'. This directory will contain the following directories
 
 <ul>
-    <li>pickle or whatever format these models were saved in</li>
+    <li>pickle/h5 (check the releases.txt file to download the appropriate pickle/h5 files)/li>
     <li>scripts</li>
+    <li>notebooks</li>
 </ul>
 
-Download the appropriate files from the repository and type the following command 
+Download the appropriate files from the repository and type the following command
 ````
 - !python /path/to/script/lockspot_rf_50k_model_script.py
 ````
