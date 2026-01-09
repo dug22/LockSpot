@@ -56,7 +56,7 @@ input features for our model.
 ## **Model Results**
 <div style="text-align: justify;">
 LockSpot uses a RandomForestClassifier trained on 50,000 records of ciphertext, representing tens of thousands of pages of encrypted text. 
-In future work, additional model architectures will be explored to further improve classification performance.The following section below
+In future work, additional model architectures will be explored to further improve classification performance. The following section below
 presents the model’s performance metrics.
 </div>
 
