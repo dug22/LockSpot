@@ -10,8 +10,9 @@
 ## **What is LockSpot?**
 
 <div style="text-align: justify">
-LockSpot is a machine learning tool that allows users to input ciphertext and receive a conducted analysis of what cipher algorithm was
-most likely used to encrypt it. LockSpot was trained to identify 15 classical cipher algorithms:
+<p>LockSpot is a machine learning tool that allows users to input ciphertext and receive a conducted analysis of what cipher algorithm was
+most likely used to encrypt it. LockSpot was trained to identify 15 classical cipher algorithms:</p>  
+
 <ol>
     <li>ADFGVX Cipher</li>
     <li>Affine Cipher</li>
@@ -35,7 +36,7 @@ most likely used to encrypt it. LockSpot was trained to identify 15 classical ci
 
 <div style="text-align: justify;">
 The AllenAI/c4 dataset was used to train LockSpot’s model. The dataset provided enough text data as a base to incorporate the following columns:
-
+    
 <ol>
 <li>Ciphertext</li> 
 <li>Decrypted Plaintext</li>
@@ -72,7 +73,7 @@ If you wish to use these models in production, locate the 'models' directory wit
 to use, in this case, 'random forest classifier 50k'. This directory will contain the following directories
 
 <ul>
-    <li>pickle/h5 (check the releases.txt file to download the appropriate pickle/h5 files)/li>
+    <li>pickle/h5 (check the releases.txt file to download the appropriate pickle/h5 files)</li>
     <li>scripts</li>
     <li>notebooks</li>
 </ul>
@@ -82,9 +83,7 @@ Download the appropriate files from the repository and type the following comman
 - !python /path/to/script/lockspot_rf_50k_model_script.py
 ````
 
-You will be prompted to provide the path to the given pickle/h5 files necessary, and after that, provide the given ciphertext, and our model
-will output an overall analysis of its predictions. It's as simple as that. When newer models are released, you will see other directories
-in the models directory.
+You will be prompted to provide the path to the given pickle/h5 files necessary, and then provide the given ciphertext. Our model will then output an overall analysis of its predictions. It's as simple as that. When newer models are released, you will see other directories in the models directory.
 
 ## **License**
 
