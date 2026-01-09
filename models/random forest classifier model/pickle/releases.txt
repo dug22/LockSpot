@@ -1,0 +1,2 @@
+You can find the appropriate pickle files by downloading them from
+https://github.com/dug22/LockSpot/releases/tag/rfc_v1
