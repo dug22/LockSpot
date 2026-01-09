@@ -82,9 +82,9 @@ Download the appropriate files from the repository and type the following comman
 - !python /path/to/script/lockspot_rf_50k_model_script.py
 ````
 
-You will be prompted to provide the path to the given pickle files necessary, and after that, provide the given ciphertext, and our model
+You will be prompted to provide the path to the given pickle/h5 files necessary, and after that, provide the given ciphertext, and our model
 will output an overall analysis of its predictions. It's as simple as that. When newer models are released, you will see other directories
-in the model's directory.
+in the models directory.
 
 ## **License**
 
