@@ -1,3 +1,12 @@
+<p align="center">
+<img width="341" height="327" alt="image" align="center" src="https://github.com/user-attachments/assets/b6a07b2f-426a-4c28-a20f-d879e85170ff" />
+</p>
+
+<div align="center">
+
+[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE) [![Stars](https://img.shields.io/github/stars/dug22/LockSpot.svg)](https://github.com/dug22/LockSpot/stargazers)  [![Downloads](https://img.shields.io/github/downloads/dug22/LockSpot/total.svg)](https://github.com/dug22/LockSpot/releases)  [![Python](https://img.shields.io/badge/python-3.11-blue)](#)  [![Java](https://img.shields.io/badge/java-23-red)](#)
+</div>
+
 ## **What is LockSpot?**
 
 <div style="text-align: justify">
@@ -49,25 +58,31 @@ input features for our model.
 LockSpot uses a RandomForestClassifier trained on 50,000 records of ciphertext, representing tens of thousands of pages of encrypted text. 
 In future work, additional model architectures will be explored to further improve classification performance.The following section below
 presents the model’s performance metrics.
+</div>
+
+<br>
 
 | Model Name          | Accuracy (%) | 
 |---------------------| --- | 
 | Random_Forest_Classifier_50k | 86.03 |
-</div>
+
 
 ## **How To Use These Models?**
 If you wish to use these models in production, locate the 'models' directory within LockSpot's GitHub repository and find the model type you wish
 to use, in this case, 'random forest classifier 50k'. This directory will contain the following directories
-    - pickle or whatever format these models were saved in
-    - scripts
 
-Download the appropriate files from the repository type the following command 
+<ul>
+    <li>pickle or whatever format these models were saved in</li>
+    <li>scripts</li>
+</ul>
+
+Download the appropriate files from the repository and type the following command 
 ````
 - !python /path/to/script/lockspot_rf_50k_model_script.py
 ````
 
-You will be prompted to provide the path to the given pickle files necessary and after that provide the given ciphertext and our model
-will conduct an overall analysis of its predictions. It's as simple as that. When newer models are released you will see other directories
+You will be prompted to provide the path to the given pickle files necessary, and after that, provide the given ciphertext, and our model
+will output an overall analysis of its predictions. It's as simple as that. When newer models are released, you will see other directories
 in the model's directory.
 
 ## **License**
