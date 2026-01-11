@@ -7,6 +7,13 @@ import os
 
 ALNUM_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
+features = [
+    "Index of Coincidence",
+    "Has Letter J?",
+    "Contains Digits?",
+    "Has Double Letters or Numbers",
+] + [f"Frequency_{c}" for c in ALNUM_CHARACTERS]
+
 def has_double_letters_or_numbers(text):
   for i in range(len(text) - 1):
     if text[i] == text[i+1]:
