@@ -1,0 +1,11 @@
+package io.github.dug22.lockspot.cipheralgorithms;
+
+public enum CipherType {
+
+    TRANSPOSITION,
+    FRACTIONATING,
+    POLYALPHABETIC_SUBSTITUTION,
+    MONOALPHABETIC_SUBSTITUTION,
+    POLYGRAPHIC_SUBSTITUTION,
+    STENOGRAPHIC
+}

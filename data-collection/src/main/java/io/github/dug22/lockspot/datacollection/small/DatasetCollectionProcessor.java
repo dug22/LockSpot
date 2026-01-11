@@ -1,4 +1,4 @@
-package io.github.dug22.lockspot.datacollection;
+package io.github.dug22.lockspot.datacollection.small;
 
 import io.github.dug22.carpentry.DataFrame;
 import io.github.dug22.carpentry.column.impl.DoubleColumn;
@@ -8,16 +8,19 @@ import io.github.dug22.carpentry.io.csv.CsvReadingProperties;
 import io.github.dug22.lockspot.cipheralgorithms.AbstractCipher;
 import io.github.dug22.lockspot.cipheralgorithms.CipherRegistry;
 import io.github.dug22.lockspot.cipheralgorithms.impl.*;
+import io.github.dug22.lockspot.datacollection.FeatureExtractorUtils;
 
 import java.io.File;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static io.github.dug22.lockspot.datacollection.FeatureExtractorUtils.*;
 
 public class DatasetCollectionProcessor {
 
     private static final CsvReadingProperties csvReadingProperties = new CsvReadingProperties()
             .setMaxColumnCharacterLength(Integer.MAX_VALUE)
-            .setSource(new File("D:\\LockSpot\\data-collection\\src\\main\\resources\\text-dataset.csv"))
+            .setSource(new File("D:\\LockSpot\\data-collection\\src\\main\\resources\\50k-plaintext-dataset.csv"))
             .setDelimiter(',');
 
     private static final DataFrame dataFrame = DataFrame.read().csv(csvReadingProperties);
@@ -39,53 +42,63 @@ public class DatasetCollectionProcessor {
     private static final VigenereCipher vigenereCipher = (VigenereCipher) cipherAlgorithmsMap.get("Vigenère Cipher");
     private static final StringColumn cipherAlgorithmNameColumn = StringColumn.create("Cipher Algorithm");
     private static final IntegerColumn cipherAlgorithmIDColumn = IntegerColumn.create("Cipher Algorithm ID");
+    private static final StringColumn cipherTypeColumn = StringColumn.create("Cipher Type");
     private static final StringColumn ciphertextColumn = StringColumn.create("Ciphertext");
     private static final StringColumn keyColumn = StringColumn.create("Key");
     private static final StringColumn decryptedPlaintextColumn = StringColumn.create("Decrypted Plaintext");
     private static final DoubleColumn indexOfCoincidenceColumn = DoubleColumn.create("Index of Coincidence");
     private static final IntegerColumn hasLetterJColumn = IntegerColumn.create("Has Letter J?");
+    private static final IntegerColumn hasDigitsColumn = IntegerColumn.create("Contains Digits?");
+    private static final IntegerColumn hasDoubleLettersOrNumbersColumn = IntegerColumn.create("Has Double Letters or Numbers");
+    private static final List<DoubleColumn> characterFrequencyProbabilityVectorColumns = FeatureExtractorUtils.createEmptyFrequencyVectorColumns();
 
     public static void addCipherDetails() {
+        AbstractCipher[] ciphers = {
+                adfgxCipher,
+                affineCipher,
+                amscoCipher,
+                atbashCipher,
+                autokeyCipher,
+                baconianCipher,
+                beaufortCipher,
+                bifidCipher,
+                caesarCipher,
+                gronsfeldCipher,
+                playfairCipher,
+                polybiusCipher,
+                portacipher,
+                railFenceCipher,
+                vigenereCipher
+        };
+
         int counter = 0;
+        int cipherCount = ciphers.length;
         for (String originalText : dataFrame.stringColumn("Original Text").getValues()) {
-            if (counter <= 3332) {
-                retrieveCipherDetails(adfgxCipher, originalText);
-            } else if (counter <= 6665) {
-                retrieveCipherDetails(affineCipher, originalText);
-            } else if (counter <= 9998) {
-                retrieveCipherDetails(amscoCipher, originalText);
-            } else if (counter <= 13331) {
-                retrieveCipherDetails(atbashCipher, originalText);
-            } else if (counter <= 16664) {
-                retrieveCipherDetails(autokeyCipher, originalText);
-            } else if (counter <= 19997) {
-                retrieveCipherDetails(baconianCipher, originalText);
-            } else if (counter <= 23330) {
-                retrieveCipherDetails(beaufortCipher, originalText);
-            } else if (counter <= 26663) {
-                retrieveCipherDetails(bifidCipher, originalText);
-            } else if (counter <= 29996) {
-                retrieveCipherDetails(caesarCipher, originalText);
-            } else if (counter <= 33329) {
-                retrieveCipherDetails(gronsfeldCipher, originalText);
-            } else if (counter <= 36662) {
-                retrieveCipherDetails(playfairCipher, originalText);
-            } else if (counter <= 39995) {
-                retrieveCipherDetails(polybiusCipher, originalText);
-            } else if (counter <= 43328) {
-                retrieveCipherDetails(portacipher, originalText);
-            } else if (counter <= 46662) {
-                retrieveCipherDetails(railFenceCipher, originalText);
-            } else {
-                retrieveCipherDetails(vigenereCipher, originalText);
-            }
+            AbstractCipher cipher = ciphers[counter % cipherCount];
+            retrieveCipherDetails(cipher, originalText);
+
             if (counter % 1000 == 0) {
                 System.out.println("Encountered " + counter + " entries so far!");
             }
             counter++;
         }
 
-        dataFrame.addColumns(cipherAlgorithmNameColumn, cipherAlgorithmIDColumn, ciphertextColumn, decryptedPlaintextColumn, keyColumn, indexOfCoincidenceColumn, hasLetterJColumn);
+        dataFrame.addColumns(
+                cipherAlgorithmNameColumn,
+                cipherAlgorithmIDColumn,
+                cipherTypeColumn,
+                ciphertextColumn,
+                decryptedPlaintextColumn,
+                keyColumn,
+                indexOfCoincidenceColumn,
+                hasLetterJColumn,
+                hasDigitsColumn,
+                hasDoubleLettersOrNumbersColumn
+        );
+
+        for (DoubleColumn column : characterFrequencyProbabilityVectorColumns) {
+            dataFrame.addColumn(column);
+        }
     }
 
     private static void retrieveCipherDetails(AbstractCipher cipherAlgorithm, String plaintext) {
@@ -100,35 +113,15 @@ public class DatasetCollectionProcessor {
 
         cipherAlgorithmNameColumn.append(cipherAlgorithm.name());
         cipherAlgorithmIDColumn.append(cipherAlgorithm.id());
+        cipherTypeColumn.append(cipherAlgorithm.cipherType());
         ciphertextColumn.append(ciphertext);
         decryptedPlaintextColumn.append(decryptedPlaintext);
         keyColumn.append(key);
         indexOfCoincidenceColumn.append(findIndexOfCoincidence(ciphertext));
-        hasLetterJColumn.append(hasLetterJ(ciphertext) ? 1 : 0);
-
-    }
-
-
-    private static double findIndexOfCoincidence(String ciphertext) {
-        int ciphertextLength = ciphertext.length();
-        HashMap<Character, Integer> characterFrequencyMap = new HashMap<>();
-        for (char character : ciphertext.toCharArray()) {
-            if (Character.isLetter(character)) {
-                characterFrequencyMap.merge(character, 1, Integer::sum);
-            }
-        }
-
-        long numerator = 0;
-        for (int frequency : characterFrequencyMap.values()) {
-            numerator += (long) frequency * (frequency - 1);
-        }
-
-        double denominator = (double) ciphertextLength * (ciphertextLength - 1);
-        return numerator / denominator;
-    }
-
-    private static boolean hasLetterJ(String ciphertext) {
-        return ciphertext.contains("J");
+        hasLetterJColumn.append(hasLetterJ(ciphertext));
+        hasDigitsColumn.append(hasDigits(ciphertext));
+        hasDoubleLettersOrNumbersColumn.append(hasDoubleLettersOrNumbers(ciphertext));
+        appendFrequencyVectorToColumns(ciphertext, characterFrequencyProbabilityVectorColumns);
     }
 
 
@@ -136,7 +129,7 @@ public class DatasetCollectionProcessor {
         dataFrame.info();
         addCipherDetails();
         dataFrame.head();
-        dataFrame.write().toCsv(new File("D:\\LockSpot\\data-collection\\src\\main\\resources\\lock-spot-cipher-dataset-2.csv"));
+        dataFrame.write().toCsv(new File("D:\\LockSpot\\data-collection\\src\\main\\resources\\lockspot-50k-ciphertext-dataset.csv"));
         System.out.println("We have successfully saved the given dataset!");
     }
 }

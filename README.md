@@ -29,6 +29,8 @@ most likely used to encrypt it. LockSpot was trained to identify 15 classical ci
     <li> Railfence Cipher</li>
     <li> Vigenère Cipher</li>
 </ol>
+
+In future works, LockSpot will be trained to identify more cipher algorithms.
 </div>
 
 ## **Dataset Collection**
@@ -40,7 +42,7 @@ The AllenAI/c4 dataset was used to train LockSpot’s model. The dataset provide
 <li>Ciphertext</li> 
 <li>Decrypted Plaintext</li>
 <li> Key</li>
-<li> Cipher Algorithm Name/ID</li>
+<li> Cipher Algorithm Name/ID/Type</li>
 <li> Index of Coincidence [IF]</li> 
 <li> Has the Letter J? [IF]</li> 
 <li> Contains Letters and Digits? [IF]</li> 
@@ -63,13 +65,74 @@ presents the model’s performance metrics.
 <br>
 
 | Model Name          | Accuracy (%) | 
-|---------------------| --- | 
-| Random_Forest_Classifier_50k | 86.03 |
+|---------------------|--------------| 
+| LockSpot_RandomForest_SMALL_50k-ciphertext | 93.26        |
+
+## **Model Types**
+LockSpot's follows a specific nomenclature for its specific models.
+
+### **SMALL**
+If you see models with the word SMALL in their name, this indicates the model was trained on the 15 initial cipher algorithms, which are: 
+
+<ol>
+    <li>ADFGVX Cipher</li>
+    <li>Affine Cipher</li>
+    <li>AMSCO Cipher</li>
+    <li> Atbash Cipher</li>
+    <li> Autokey Cipher</li>
+    <li> Baconian Cipher</li>
+    <li> Beaufort Cipher</li>
+    <li> Bifid Cipher</li>
+    <li> Caesar Cipher</li>
+    <li> Gronsfeld Cipher</li>
+    <li> Playfair Cipher</li>
+    <li> Polybius Cipher</li>
+    <li> Porta Cipher</li>
+    <li> Railfence Cipher</li>
+    <li> Vigenère Cipher</li>
+</ol>
+
+### **LARGE**
+Even though this hasn't been implemented yet, models with the word LARGE in their name indicate the model was trained on the initial 15 cipher algorithms, along with 15 others
+which are:
+
+<ol>
+    <li>ADFGVX Cipher</li>
+    <li>Affine Cipher</li>
+    <li>Alberti Cipher</li>
+    <li>AMSCO Cipher</li>
+    <li>Atbash Cipher</li>
+    <li>Autokey Cipher</li>
+    <li>Baconian Cipher</li>
+    <li>Bazeries</li>
+    <li>Beaufort Cipher</li>
+    <li>Bifid Cipher</li>
+    <li>Cadenus</li>
+    <li>Caesar Cipher</li>
+    <li>Columnar Cipher</li>
+    <li>Grandpré Cipher</li>
+    <li>Gronsfeld Cipher</li>
+    <li>Hill Cipher</li>
+    <li>Myszkowski Cipher</li>
+    <li>Nihilist Substitution Cipher</li>
+    <li>Nihilist Transposition Cipher</li>
+    <li>Playfair Cipher</li>
+    <li>Polybius Cipher</li>
+    <li>Porta Cipher</li>
+    <li>Railfence Cipher</li>
+    <li>ROT13</li>
+    <li>Route Cipher</li>
+    <li>Running Key Cipher</li>
+    <li>Trifid Cipher</li>
+    <li>Trithemius Cipher</li>
+    <li>Two Square Cipher</li>
+    <li>Vigenère Cipher</li>
+</ol>
 
 
 ## **How To Use These Models?**
 If you wish to use these models in production, locate the 'models' directory within LockSpot's GitHub repository and find the model type you wish
-to use, in this case, 'random forest classifier 50k'. This directory will contain the following directories
+to use, in this case, 'random forest classifier'. This directory will contain the following directories
 
 <ul>
     <li>pickle/h5 (check the releases.txt file to download the appropriate pickle/h5 files)/li>
@@ -79,12 +142,12 @@ to use, in this case, 'random forest classifier 50k'. This directory will contai
 
 Download the appropriate files from the repository and type the following command
 ````
-- !python /path/to/script/lockspot_rf_50k_model_script.py
+- !python /path/to/script/LockSpot_RandomForest_script.py
 ````
 
 You will be prompted to provide the path to the given pickle/h5 files necessary, and after that, provide the given ciphertext, and our model
 will output an overall analysis of its predictions. It's as simple as that. When newer models are released, you will see other directories
-in the models directory.
+in the given models directory.
 
 ## **License**
 

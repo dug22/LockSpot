@@ -1,6 +1,7 @@
 package io.github.dug22.lockspot.cipheralgorithms.impl;
 
 import io.github.dug22.lockspot.cipheralgorithms.AbstractCipher;
+import io.github.dug22.lockspot.cipheralgorithms.CipherType;
 import io.github.dug22.lockspot.cipheralgorithms.CipherUtils;
 import io.github.dug22.lockspot.cipheralgorithms.PolybiusSquare;
 
@@ -17,6 +18,11 @@ public class PlayfairCipher extends AbstractCipher {
     @Override
     public int id() {
         return 11;
+    }
+
+    @Override
+    public String cipherType(){
+        return CipherType.POLYGRAPHIC_SUBSTITUTION.name();
     }
 
     @Override

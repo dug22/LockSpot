@@ -1,6 +1,7 @@
 package io.github.dug22.lockspot.cipheralgorithms.impl;
 
 import io.github.dug22.lockspot.cipheralgorithms.AbstractCipher;
+import io.github.dug22.lockspot.cipheralgorithms.CipherType;
 import io.github.dug22.lockspot.cipheralgorithms.CipherUtils;
 
 public class PortaCipher extends AbstractCipher {
@@ -13,6 +14,11 @@ public class PortaCipher extends AbstractCipher {
     @Override
     public int id() {
         return 13;
+    }
+
+    @Override
+    public String cipherType(){
+        return CipherType.POLYALPHABETIC_SUBSTITUTION.name();
     }
 
     @Override

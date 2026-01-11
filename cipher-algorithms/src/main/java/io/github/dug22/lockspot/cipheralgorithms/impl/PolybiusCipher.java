@@ -1,6 +1,7 @@
 package io.github.dug22.lockspot.cipheralgorithms.impl;
 
 import io.github.dug22.lockspot.cipheralgorithms.AbstractCipher;
+import io.github.dug22.lockspot.cipheralgorithms.CipherType;
 import io.github.dug22.lockspot.cipheralgorithms.PolybiusSquare;
 
 public class PolybiusCipher extends AbstractCipher {
@@ -15,6 +16,11 @@ public class PolybiusCipher extends AbstractCipher {
     @Override
     public int id() {
         return 12;
+    }
+
+    @Override
+    public String cipherType(){
+        return CipherType.FRACTIONATING.name();
     }
 
     @Override

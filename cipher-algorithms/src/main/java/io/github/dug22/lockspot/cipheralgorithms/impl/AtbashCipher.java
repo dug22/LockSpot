@@ -1,6 +1,7 @@
 package io.github.dug22.lockspot.cipheralgorithms.impl;
 
 import io.github.dug22.lockspot.cipheralgorithms.AbstractCipher;
+import io.github.dug22.lockspot.cipheralgorithms.CipherType;
 
 public class AtbashCipher extends AbstractCipher {
 
@@ -12,6 +13,11 @@ public class AtbashCipher extends AbstractCipher {
     @Override
     public int id() {
         return 4;
+    }
+
+    @Override
+    public String cipherType(){
+        return CipherType.MONOALPHABETIC_SUBSTITUTION.name();
     }
 
     @Override

@@ -1,6 +1,7 @@
 package io.github.dug22.lockspot.cipheralgorithms.impl;
 
 import io.github.dug22.lockspot.cipheralgorithms.AbstractCipher;
+import io.github.dug22.lockspot.cipheralgorithms.CipherType;
 import io.github.dug22.lockspot.cipheralgorithms.CipherUtils;
 import io.github.dug22.lockspot.cipheralgorithms.PolybiusSquare;
 
@@ -24,6 +25,11 @@ public class BifidCipher extends AbstractCipher {
     @Override
     public int id() {
         return 8;
+    }
+
+    @Override
+    public String cipherType(){
+        return CipherType.FRACTIONATING.name() + " " + CipherType.TRANSPOSITION.name();
     }
 
     @Override

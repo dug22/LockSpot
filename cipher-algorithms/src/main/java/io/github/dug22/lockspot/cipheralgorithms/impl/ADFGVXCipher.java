@@ -1,6 +1,7 @@
 package io.github.dug22.lockspot.cipheralgorithms.impl;
 
 import io.github.dug22.lockspot.cipheralgorithms.AbstractCipher;
+import io.github.dug22.lockspot.cipheralgorithms.CipherType;
 import io.github.dug22.lockspot.cipheralgorithms.CipherUtils;
 
 import java.util.*;
@@ -18,6 +19,11 @@ public class ADFGVXCipher extends AbstractCipher {
     @Override
     public int id() {
         return 1;
+    }
+
+    @Override
+    public String cipherType(){
+        return CipherType.FRACTIONATING.name() + " " + CipherType.TRANSPOSITION.name();
     }
 
 
@@ -74,8 +80,6 @@ public class ADFGVXCipher extends AbstractCipher {
     public String decrypt(String ciphertext, String key) {
         throw new UnsupportedOperationException("No decryption method implemented!");
     }
-
-
 
     @Override
     public String generateRandomKey() {

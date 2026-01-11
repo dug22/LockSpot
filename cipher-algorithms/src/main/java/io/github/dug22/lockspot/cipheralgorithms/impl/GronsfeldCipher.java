@@ -1,6 +1,7 @@
 package io.github.dug22.lockspot.cipheralgorithms.impl;
 
 import io.github.dug22.lockspot.cipheralgorithms.AbstractCipher;
+import io.github.dug22.lockspot.cipheralgorithms.CipherType;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,6 +21,11 @@ public class GronsfeldCipher extends AbstractCipher {
     @Override
     public int id() {
         return 10;
+    }
+
+    @Override
+    public String cipherType(){
+        return CipherType.POLYALPHABETIC_SUBSTITUTION.name();
     }
 
     @Override

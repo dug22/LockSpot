@@ -8,11 +8,14 @@ public abstract class AbstractCipher {
 
     public abstract int id();
 
+    public abstract String cipherType();
+
     public abstract String encrypt(String plaintext, String key);
 
     public abstract String decrypt(String ciphertext, String key);
 
     public abstract String generateRandomKey();
+
 
     public String getAlphabet() {
         return ALPHABET;

@@ -1,6 +1,7 @@
 package io.github.dug22.lockspot.cipheralgorithms.impl;
 
 import io.github.dug22.lockspot.cipheralgorithms.AbstractCipher;
+import io.github.dug22.lockspot.cipheralgorithms.CipherType;
 import io.github.dug22.lockspot.cipheralgorithms.CipherUtils;
 
 public class AutokeyCipher extends AbstractCipher {
@@ -16,6 +17,11 @@ public class AutokeyCipher extends AbstractCipher {
     @Override
     public int id() {
         return 5;
+    }
+
+    @Override
+    public String cipherType(){
+        return CipherType.POLYALPHABETIC_SUBSTITUTION.name();
     }
 
 

@@ -1,6 +1,7 @@
 package io.github.dug22.lockspot.cipheralgorithms.impl;
 
 import io.github.dug22.lockspot.cipheralgorithms.AbstractCipher;
+import io.github.dug22.lockspot.cipheralgorithms.CipherType;
 
 import java.util.Map;
 
@@ -77,6 +78,10 @@ public class BaconianCipher extends AbstractCipher {
         return 6;
     }
 
+    @Override
+    public String cipherType(){
+        return CipherType.STENOGRAPHIC.name();
+    }
 
     @Override
     public String encrypt(String plaintext, String key) {

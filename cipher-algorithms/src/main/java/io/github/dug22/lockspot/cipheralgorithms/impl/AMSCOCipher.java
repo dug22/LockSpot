@@ -1,6 +1,7 @@
 package io.github.dug22.lockspot.cipheralgorithms.impl;
 
 import io.github.dug22.lockspot.cipheralgorithms.AbstractCipher;
+import io.github.dug22.lockspot.cipheralgorithms.CipherType;
 
 import java.util.*;
 import java.util.stream.IntStream;
@@ -18,6 +19,11 @@ public class AMSCOCipher extends AbstractCipher {
     }
 
     @Override
+    public String cipherType(){
+        return CipherType.TRANSPOSITION.name();
+    }
+
+    @Override
     public String encrypt(String plaintext, String key) {
 
         int keyLength = key.length();
@@ -27,7 +33,7 @@ public class AMSCOCipher extends AbstractCipher {
                 .toArray(Integer[]::new);
 
         StringBuilder[] columns = IntStream.range(0, keyLength)
-                .mapToObj(i -> new StringBuilder())
+                .mapToObj(_ -> new StringBuilder())
                 .toArray(StringBuilder[]::new);
 
         int textIndex = 0;
