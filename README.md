@@ -69,7 +69,7 @@ presents the model’s performance metrics.
 | LockSpot_RandomForest_SMALL_50k-ciphertext | 93.26        |
 
 ## **Model Types**
-LockSpot's follows a specific nomenclature for its specific models.
+LockSpot follows a specific nomenclature for its specific models.
 
 ### **SMALL**
 If you see models with the word SMALL in their name, this indicates the model was trained on the 15 initial cipher algorithms, which are: 
