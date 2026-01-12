@@ -149,6 +149,10 @@ You will be prompted to provide the path to the given pickle/h5 files necessary,
 will output an overall analysis of its predictions. It's as simple as that. When newer models are released, you will see other directories
 in the given models directory.
 
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/819b7e55-1c52-4d5e-b3ef-6dd5b7c6bedb" controls></video>
+</div>
+
 ## **License**
 
 <div style="text-align: justify;">
