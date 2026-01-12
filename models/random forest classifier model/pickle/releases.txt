@@ -1,2 +1,0 @@
-Latest Model Release can be found here
-https://github.com/dug22/LockSpot/releases/tag/rfc_v2
