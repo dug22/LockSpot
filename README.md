@@ -140,9 +140,9 @@ to use, in this case, 'random forest classifier'. This directory will contain th
     <li>notebooks</li>
 </ul>
 
-Download the appropriate files from the repository and type the following command
+Download the appropriate files from the appropriate model directory and type the following command to run the script.
 ````
-- !python /path/to/script/LockSpot_RandomForest_script.py
+- python /path/to/script/LockSpot_RandomForest_script.py
 ````
 
 You will be prompted to provide the path to the given pickle/h5 files necessary, and after that, provide the given ciphertext, and our model
