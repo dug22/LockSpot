@@ -10,8 +10,7 @@
 ## **What is LockSpot?**
 
 <div style="text-align: justify">
-LockSpot is a machine learning tool that allows users to input ciphertext and receive a conducted analysis of what cipher algorithm was
-most likely used to encrypt it. LockSpot was trained to identify 15 classical cipher algorithms:
+LockSpot is a machine learning tool that allows users to input ciphertext and receive a conducted analysis of the cipher algorithm most likely used to encrypt it, along with the cipher category it most likely belongs to (such as monoalphabetic substitution, polyalphabetic substitution, transposition, and more). LockSpot was trained to identify 15 classical cipher algorithms:
 <ol>
     <li>ADFGVX Cipher</li>
     <li>Affine Cipher</li>
