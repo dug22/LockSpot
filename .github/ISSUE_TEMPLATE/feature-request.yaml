@@ -1,0 +1,35 @@
+---
+name: ✨ Feature Request
+description: Suggest an idea to help improve LockSpot
+title: "[Feature]: "
+labels:
+  - "feature"
+
+body:
+  - type: markdown
+    attributes:
+      value: >
+        **Thanks for taking the time to submit a feature request!**
+        Please check existing issues to avoid duplicates before submitting.
+
+  - type: textarea
+    attributes:
+      label: Description
+      description: |
+        Provide a clear and concise description of the feature you're interested in.
+      value: |
+        <!-- Describe your feature here -->
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Potential Benefits
+      description: >
+        Describe how this feature would be beneficial to LockSpot and its users.
+        Explain what problems it solves or what improvements it provides.
+      value: |
+        <!-- Describe how this feature would be beneficial -->
+    validations:
+      required: false
+

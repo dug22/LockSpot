@@ -7,148 +7,125 @@
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE) [![Stars](https://img.shields.io/github/stars/dug22/LockSpot.svg)](https://github.com/dug22/LockSpot/stargazers)  [![Downloads](https://img.shields.io/github/downloads/dug22/LockSpot/total.svg)](https://github.com/dug22/LockSpot/releases)  [![Python](https://img.shields.io/badge/python-3.11-blue)](#)  [![Java](https://img.shields.io/badge/java-23-red)](#)
 </div>
 
-## **What is LockSpot?**
-
-<div style="text-align: justify">
-LockSpot is a machine learning tool that allows users to input ciphertext and receive a conducted analysis of the cipher algorithm most likely used to encrypt it, along with the cipher category it most likely belongs to (such as monoalphabetic substitution, polyalphabetic substitution, transposition, and more).
-<p></p>
-LockSpot was trained to identify 15 classical cipher algorithms:
-<ol>
-    <li>ADFGVX Cipher</li>
-    <li>Affine Cipher</li>
-    <li>AMSCO Cipher</li>
-    <li> Atbash Cipher</li>
-    <li> Autokey Cipher</li>
-    <li> Baconian Cipher</li>
-    <li> Beaufort Cipher</li>
-    <li> Bifid Cipher</li>
-    <li> Caesar Cipher</li>
-    <li> Gronsfeld Cipher</li>
-    <li> Playfair Cipher</li>
-    <li> Polybius Cipher</li>
-    <li> Porta Cipher</li>
-    <li> Railfence Cipher</li>
-    <li> Vigenère Cipher</li>
-</ol>
-
-In future works, LockSpot will be trained to identify more cipher algorithms.
-</div>
-
-## **Dataset Collection**
-
-<div style="text-align: justify;">
-The AllenAI/c4 dataset was used to train LockSpot’s model. The dataset provided enough text data as a base to incorporate the following columns:
-
-<ol>
-<li>Ciphertext</li> 
-<li>Decrypted Plaintext</li>
-<li> Key</li>
-<li> Cipher Algorithm Name/ID/Type</li>
-<li> Index of Coincidence [IF]</li> 
-<li> Has the Letter J? [IF]</li> 
-<li> Contains Letters and Digits? [IF]</li> 
-<li> Contains Digits? [IF]</li> 
-<li> Contains Double Letters or Numbers? [IF]</li> 
-<li> Character Frequency Probabilities (A-Z 0-9) [IF] </li> 
-</ol>
-Some of these columns of data were provided as input features for our model to learn from to classify which cipher
-algorithm was most likely used to encrypt the inputted ciphertext. Columns with an "[IF]" label indicate that their data were used as 
-input features for our model.
-</div>
-
-## **Model Results**
-<div style="text-align: justify;">
-LockSpot uses a RandomForestClassifier trained on 50,000 records of ciphertext, representing tens of thousands of pages of encrypted text. 
-In future work, additional model architectures will be explored to further improve classification performance. The following section below
-presents the model’s performance metrics.
-</div>
-
-<br>
-
-| Model Name          | Accuracy (%) | 
-|---------------------|--------------| 
-| LockSpot_RandomForest_SMALL_50k-ciphertext | 93.26        |
-
-## **Model Types**
-LockSpot follows a specific nomenclature for its specific models.
-
-### **SMALL**
-If you see models with the word SMALL in their name, this indicates the model was trained on the 15 initial cipher algorithms, which are: 
-
-<ol>
-    <li>ADFGVX Cipher</li>
-    <li>Affine Cipher</li>
-    <li>AMSCO Cipher</li>
-    <li> Atbash Cipher</li>
-    <li> Autokey Cipher</li>
-    <li> Baconian Cipher</li>
-    <li> Beaufort Cipher</li>
-    <li> Bifid Cipher</li>
-    <li> Caesar Cipher</li>
-    <li> Gronsfeld Cipher</li>
-    <li> Playfair Cipher</li>
-    <li> Polybius Cipher</li>
-    <li> Porta Cipher</li>
-    <li> Railfence Cipher</li>
-    <li> Vigenère Cipher</li>
-</ol>
-
-### **LARGE**
-Even though this hasn't been implemented yet, models with the word LARGE in their name indicate the model was trained on the initial 15 cipher algorithms, along with 15 others
-which are:
-
-<ol>
-    <li>ADFGVX Cipher</li>
-    <li>Affine Cipher</li>
-    <li>Alberti Cipher</li>
-    <li>AMSCO Cipher</li>
-    <li>Atbash Cipher</li>
-    <li>Autokey Cipher</li>
-    <li>Baconian Cipher</li>
-    <li>Bazeries</li>
-    <li>Beaufort Cipher</li>
-    <li>Bifid Cipher</li>
-    <li>Cadenus</li>
-    <li>Caesar Cipher</li>
-    <li>Columnar Cipher</li>
-    <li>Grandpré Cipher</li>
-    <li>Gronsfeld Cipher</li>
-    <li>Hill Cipher</li>
-    <li>Myszkowski Cipher</li>
-    <li>Nihilist Substitution Cipher</li>
-    <li>Nihilist Transposition Cipher</li>
-    <li>Playfair Cipher</li>
-    <li>Polybius Cipher</li>
-    <li>Porta Cipher</li>
-    <li>Railfence Cipher</li>
-    <li>ROT13</li>
-    <li>Route Cipher</li>
-    <li>Running Key Cipher</li>
-    <li>Trifid Cipher</li>
-    <li>Trithemius Cipher</li>
-    <li>Two Square Cipher</li>
-    <li>Vigenère Cipher</li>
-</ol>
 
 
-## **How To Use These Models?**
-If you wish to use these models in production, locate the 'models' directory within LockSpot's GitHub repository and find the model type you wish
-to use, in this case, 'random forest classifier'. This directory will contain the following directories
+<p align="center">
+  <a href="https://github.com/dug22/LockSpot/issues">
+    <strong style="font-size: 1.5em; text-decoration: underline;">Create An Issue</strong>
+  </a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/dug22/LockSpot/pulls">
+    <strong style="font-size: 1.5em; text-decoration: underline;">Create A Pull Request</strong>
+  </a>
+</p>
 
-<ul>
-    <li>pickle/h5 (check the releases.md file to download the appropriate pickle/h5 files as these are how are our machine learning models are saved)</li>
-    <li>scripts</li>
-    <li>notebooks</li>
-</ul>
+## Overview
+LockSpot is a machine learning tool that allows users to input ciphertext and receive a
+conducted analysis of the cipher algorithm most likely used to encrypt it, along with the
+cipher category it most likely belongs to (such as monoalphabetic substitution, polyalphabetic
+substitution, transposition, and more).
 
-Download the appropriate files from the appropriate model directory and type the following command to run the script.
-````
-- python /path/to/script/LockSpot_RandomForest_script.py
-````
+This tool is designed for academic researches, and cryptography enthusiasts.
 
-You will be prompted to provide the path to the given pickle/h5 files necessary, and after that, provide the given ciphertext, and our model
-will output an overall analysis of its predictions. It's as simple as that. When newer models are released, you will see other directories
-in the given models directory.
+## LockSpot Features
+- Predicts cipher algorithm from ciphertext.
+- Determines cipher type (substitution, transposition, polyalphabetic, etc.).
+- Supports multiple classical cipher algorithms.
+- Provides confidence scores for predictions.
+- Easy-to-use CLI interface.
+- All models and scripts included in releases.
+
+## Releases
+Releases contain the appropriate pre-trained models and the scripts necessary to run the tool. Latest releases of LockSpot
+can be found **[HERE](https://github.com/dug22/LockSpot/releases)**
+
+## Getting Started
+
+### Prerequisites
+- Ensure you have Python 3.11 installed.
+
+### Installation & Quick Start
+The installation process is quite simple and easy. If you wish to easily get a hold of all of LockSpot's latest models and CLI script,
+you can simply do the following:
+1. Simply copy and paste the given script down below into a given .sh file. This script is compatible with both Windows and Linux.
+   <details>
+   <summary>Click To Expand</summary>
+
+   ```
+       #!/usr/bin/env bash
+       # ======================================
+       # LockSpot Auto-Downloader (Cross-Platform)
+       # Works on Linux, Mac, and Windows (WSL or Git Bash)
+       # ======================================
+       
+       echo "Detecting OS..."
+       OS="$(uname -s)"
+       echo "Detected OS: $OS"
+
+       GITHUB_API="https://api.github.com/repos/dug22/LockSpot/releases/latest"
+       
+       # Create output directory
+       OUT_DIR="LockSpot_Model"
+       mkdir -p "$OUT_DIR"
+       
+       if [[ "$OS" == "Linux" || "$OS" == "Darwin" ]]; then
+           echo "Using Linux/Mac downloader..."
+           ZIP_URLS=$(curl -s "$GITHUB_API" | grep "browser_download_url" | grep ".zip" | grep -v "source" | cut -d '"' -f 4)
+       
+           if [ -z "$ZIP_URLS" ]; then
+               echo "No release ZIPs found."
+               exit 1
+           fi
+       
+           for URL in $ZIP_URLS; do
+               FILE_NAME=$(basename "$URL")
+               echo "Downloading $FILE_NAME..."
+               curl -L -o "$FILE_NAME" "$URL"
+               echo "Extracting $FILE_NAME..."
+               unzip -o "$FILE_NAME" -d "$OUT_DIR"
+           done
+       
+       elif [[ "$OS" == "MINGW"* || "$OS" == "CYGWIN"* || "$OS" == "MSYS"* ]]; then
+           echo "Using Windows downloader via PowerShell..."
+           powershell -Command "
+           \$release = Invoke-RestMethod -Uri '$GITHUB_API';
+           \$zips = \$release.assets | Where-Object { \$_.name -like '*.zip' -and \$_.name -notlike '*source*' };
+           \$dir = '$OUT_DIR';
+           New-Item -ItemType Directory -Force -Path \$dir | Out-Null;
+           foreach (\$zip in \$zips) {
+               \$url = \$zip.browser_download_url;
+               \$file = Split-Path \$url -Leaf;
+               Write-Host 'Downloading ' \$file;
+               Invoke-WebRequest -Uri \$url -OutFile \$file;
+               Write-Host 'Extracting ' \$file;
+               Expand-Archive -Path \$file -DestinationPath \$dir -Force;
+           }
+           Write-Host 'All downloads and extractions complete. Files are in .\$dir';
+           pause
+           "
+       else
+           echo "Unsupported OS: $OS"
+           exit 1
+       fi
+       
+       echo "Done."
+   ```
+   </details>
+2. Save the given shell file.
+3. If you're on Windows use the following command ```sh path/to/lockspot_autodownloader.sh```. If you're on Linux, use the following
+   command ```bash path/to/lockspot_autodownloader.sh```
+
+
+If you don’t want to download every model, simply go to the release of your choice.  We provide simple instructions on how to
+download the appropriate .zip file using the curl and wget commands.
+
+Once you’ve installed your chosen models, unzip the corresponding file and run the main script included with each model.
+For example, to use LockSpot’s RandomForest models, enter the following command:
+
+```python /path/to/LockSpot_Random_Forest_Script.py```
+
+After running the command, you will be prompted to provide the path to the given pickle/h5 files necessary, and after that, provide the given ciphertext, and our model
+will output an overall analysis of its predictions. It's as simple as that. Please refer to the video down below, as a reference:
 
 <div align="center">
   <video src="https://github.com/user-attachments/assets/819b7e55-1c52-4d5e-b3ef-6dd5b7c6bedb" controls></video>
@@ -181,11 +158,4 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
 ## **Contributions**
-If you'd like to contribute to this repository, feel free to open a pull request with your suggestions, bug fixes, or enhancements. Contributions are always welcome!
-
-
-
-
-
-
-
+Contributions are welcome! If you have suggestions, bug fixes, or enhancements, please open an issue to share them.
