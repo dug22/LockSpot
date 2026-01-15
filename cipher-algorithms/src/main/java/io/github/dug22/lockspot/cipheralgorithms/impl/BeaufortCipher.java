@@ -13,10 +13,6 @@ public class BeaufortCipher extends AbstractCipher {
         return "Beaufort Cipher";
     }
 
-    @Override
-    public int id() {
-        return 7;
-    }
 
     @Override
     public String cipherType(){

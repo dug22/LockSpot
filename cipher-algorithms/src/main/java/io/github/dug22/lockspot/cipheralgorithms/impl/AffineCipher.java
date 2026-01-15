@@ -15,11 +15,6 @@ public class AffineCipher extends AbstractCipher {
     }
 
     @Override
-    public int id() {
-        return 2;
-    }
-
-    @Override
     public String cipherType(){
         return CipherType.MONOALPHABETIC_SUBSTITUTION.name();
     }

@@ -19,11 +19,6 @@ public class GronsfeldCipher extends AbstractCipher {
     }
 
     @Override
-    public int id() {
-        return 10;
-    }
-
-    @Override
     public String cipherType(){
         return CipherType.POLYALPHABETIC_SUBSTITUTION.name();
     }

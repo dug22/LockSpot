@@ -16,11 +16,6 @@ public class PlayfairCipher extends AbstractCipher {
     }
 
     @Override
-    public int id() {
-        return 11;
-    }
-
-    @Override
     public String cipherType(){
         return CipherType.POLYGRAPHIC_SUBSTITUTION.name();
     }

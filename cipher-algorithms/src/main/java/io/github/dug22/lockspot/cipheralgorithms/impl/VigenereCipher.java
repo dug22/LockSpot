@@ -12,11 +12,6 @@ public class VigenereCipher extends AbstractCipher {
     }
 
     @Override
-    public int id() {
-        return 15;
-    }
-
-    @Override
     public String cipherType(){
         return CipherType.POLYALPHABETIC_SUBSTITUTION.name();
     }

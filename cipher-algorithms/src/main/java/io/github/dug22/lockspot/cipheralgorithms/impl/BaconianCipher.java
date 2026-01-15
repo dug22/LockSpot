@@ -74,11 +74,6 @@ public class BaconianCipher extends AbstractCipher {
     }
 
     @Override
-    public int id() {
-        return 6;
-    }
-
-    @Override
     public String cipherType(){
         return CipherType.STENOGRAPHIC.name();
     }

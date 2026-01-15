@@ -13,11 +13,6 @@ public class CaesarCipher extends AbstractCipher {
     }
 
     @Override
-    public int id() {
-        return 9;
-    }
-
-    @Override
     public String cipherType(){
         return CipherType.MONOALPHABETIC_SUBSTITUTION.name();
     }

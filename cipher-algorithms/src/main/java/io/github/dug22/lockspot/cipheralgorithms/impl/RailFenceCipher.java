@@ -13,11 +13,6 @@ public class RailFenceCipher extends AbstractCipher {
     }
 
     @Override
-    public int id() {
-        return 14;
-    }
-
-    @Override
     public String cipherType(){
         return CipherType.TRANSPOSITION.name();
     }

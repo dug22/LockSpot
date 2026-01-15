@@ -17,11 +17,6 @@ public class ADFGVXCipher extends AbstractCipher {
     }
 
     @Override
-    public int id() {
-        return 1;
-    }
-
-    @Override
     public String cipherType(){
         return CipherType.FRACTIONATING.name() + " " + CipherType.TRANSPOSITION.name();
     }

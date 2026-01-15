@@ -6,8 +6,6 @@ public abstract class AbstractCipher {
 
     public abstract String name();
 
-    public abstract int id();
-
     public abstract String cipherType();
 
     public abstract String encrypt(String plaintext, String key);

@@ -14,11 +14,6 @@ public class AMSCOCipher extends AbstractCipher {
     }
 
     @Override
-    public int id() {
-        return 3;
-    }
-
-    @Override
     public String cipherType(){
         return CipherType.TRANSPOSITION.name();
     }

@@ -12,11 +12,6 @@ public class PortaCipher extends AbstractCipher {
     }
 
     @Override
-    public int id() {
-        return 13;
-    }
-
-    @Override
     public String cipherType(){
         return CipherType.POLYALPHABETIC_SUBSTITUTION.name();
     }

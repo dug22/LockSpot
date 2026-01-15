@@ -41,7 +41,6 @@ public class DatasetCollectionProcessor {
     private static final RailFenceCipher railFenceCipher = (RailFenceCipher) cipherAlgorithmsMap.get("Rail Fence Cipher");
     private static final VigenereCipher vigenereCipher = (VigenereCipher) cipherAlgorithmsMap.get("Vigenère Cipher");
     private static final StringColumn cipherAlgorithmNameColumn = StringColumn.create("Cipher Algorithm");
-    private static final IntegerColumn cipherAlgorithmIDColumn = IntegerColumn.create("Cipher Algorithm ID");
     private static final StringColumn cipherTypeColumn = StringColumn.create("Cipher Type");
     private static final StringColumn ciphertextColumn = StringColumn.create("Ciphertext");
     private static final StringColumn keyColumn = StringColumn.create("Key");
@@ -85,7 +84,6 @@ public class DatasetCollectionProcessor {
 
         dataFrame.addColumns(
                 cipherAlgorithmNameColumn,
-                cipherAlgorithmIDColumn,
                 cipherTypeColumn,
                 ciphertextColumn,
                 decryptedPlaintextColumn,
@@ -112,7 +110,6 @@ public class DatasetCollectionProcessor {
         }
 
         cipherAlgorithmNameColumn.append(cipherAlgorithm.name());
-        cipherAlgorithmIDColumn.append(cipherAlgorithm.id());
         cipherTypeColumn.append(cipherAlgorithm.cipherType());
         ciphertextColumn.append(ciphertext);
         decryptedPlaintextColumn.append(decryptedPlaintext);

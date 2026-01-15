@@ -14,11 +14,6 @@ public class PolybiusCipher extends AbstractCipher {
     }
 
     @Override
-    public int id() {
-        return 12;
-    }
-
-    @Override
     public String cipherType(){
         return CipherType.FRACTIONATING.name();
     }

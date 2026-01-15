@@ -15,11 +15,6 @@ public class AutokeyCipher extends AbstractCipher {
     }
 
     @Override
-    public int id() {
-        return 5;
-    }
-
-    @Override
     public String cipherType(){
         return CipherType.POLYALPHABETIC_SUBSTITUTION.name();
     }
