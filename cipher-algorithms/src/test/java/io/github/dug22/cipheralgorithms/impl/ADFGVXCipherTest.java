@@ -8,7 +8,7 @@ import io.github.dug22.lockspot.cipheralgorithms.impl.AffineCipher;
 public class ADFGVXCipherTest extends AbstractCipherTestCase {
 
     @Test
-    public void testAffineCipher() {
+    public void testADFGVXCipher() {
         String plaintext = "The ADFGVX is a German encryption system dating from WWI.";
         String key = "ADFGVX SECRET";
         ADFGVXCipher adfgvxCipher = (ADFGVXCipher) getCipher("ADFGVX Cipher");
