@@ -21,6 +21,7 @@ public class AMSCOCipher extends AbstractCipher {
     @Override
     public String encrypt(String plaintext, String key) {
 
+        plaintext = plaintext.toUpperCase();
         int keyLength = key.length();
 
         Integer[] columnOrder = IntStream.range(0, keyLength).boxed()

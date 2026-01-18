@@ -29,6 +29,7 @@ public class BifidCipher extends AbstractCipher {
 
     @Override
     public String encrypt(String plaintext, String key) {
+        plaintext = plaintext.toUpperCase();
         key = upperCase(key);
         key = key.replace("J", "I");
         plaintext = plaintext.replace("J", "I");
