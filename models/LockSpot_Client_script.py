@@ -2,6 +2,7 @@ import pickle
 import pandas as pd
 import re
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.neural_network import MLPClassifier
 from collections import Counter
 import os
 
@@ -79,7 +80,7 @@ def predict_cipher_algorithm_used(model, user_input_text):
         labels_with_confidence = [
             (label, confidence)
             for label, confidence in zip(category_labels, category_probabilities)
-            if confidence > 0
+            if confidence > 0.01
         ]
 
         labels_with_confidence.sort(key=lambda item: item[1], reverse=True)
@@ -108,7 +109,7 @@ def predict_cipher_algorithm_used(model, user_input_text):
 
 def load_model_from_user():
     while True:
-        model_path = input("Specify the path to the RandomForest model:").strip()
+        model_path = input("Specify the file path to the given RandomForest or FFN model you wish to use:").strip()
         if os.path.exists(model_path):
             with open(model_path, "rb") as f:
                 model = pickle.load(f)
@@ -127,8 +128,6 @@ def main():
     print("Welcome to The LockSpot Command Line Tool!")
     print()
     print("Keep a look out for updates on GitHub: https://github.com/dug22/LockSpot")
-    print()
-    print("You are currently using the: LockSpot Random Forest Model Script")
     print()
     model = load_model_from_user()
     print()

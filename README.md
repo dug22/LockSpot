@@ -37,7 +37,9 @@ This tool is designed for academic researches, and cryptography enthusiasts.
 
 ## Releases
 Releases contain the appropriate pre-trained models and the scripts necessary to run the tool. Latest releases of LockSpot
-can be found **[HERE](https://github.com/dug22/LockSpot/releases)**
+can be found **[HERE](https://github.com/dug22/LockSpot/releases)** . Note! All future releases will be distributed in two separate
+ZIP files, labeled "LARGE" and "SMALL", meaning the "LARGE" zip release will contain all large models, while the "SMALL" 
+zip release will contain all small models, along with a main client script to interact with our tool.
 
 ## Getting Started
 
@@ -120,9 +122,9 @@ If you don’t want to download every model, simply go to the release of your ch
 download the appropriate .zip file using the curl and wget commands.
 
 Once you’ve installed your chosen models, unzip the corresponding file and run the main script included with each model.
-For example, to use LockSpot’s RandomForest models, enter the following command:
+For example, to use LockSpot’s SMALL models, enter the following command:
 
-```python /path/to/LockSpot_Random_Forest_Script.py```
+```python /path/to/LockSpot_Client_Script.py```
 
 After running the command, you will be prompted to provide the path to the given pickle/h5 files necessary, and after that, provide the given ciphertext, and our model
 will output an overall analysis of its predictions. It's as simple as that. Please refer to the video down below, as a reference:
