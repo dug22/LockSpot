@@ -3,7 +3,6 @@ package io.github.dug22.cipheralgorithms.impl;
 import io.github.dug22.cipheralgorithms.AbstractCipherTestCase;
 import io.github.dug22.cipheralgorithms.Test;
 import io.github.dug22.lockspot.cipheralgorithms.impl.ADFGVXCipher;
-import io.github.dug22.lockspot.cipheralgorithms.impl.AffineCipher;
 
 public class ADFGVXCipherTest extends AbstractCipherTestCase {
 
